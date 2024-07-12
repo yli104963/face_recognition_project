@@ -74,16 +74,7 @@
     python manage.py runserver
     ```
 
-## 配置
 
-### `settings.py`
-
-确保在 `settings.py` 中配置了媒体文件的路径：
-
-```python
-MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
-```
 
 ## 使用说明
 
