@@ -210,20 +210,14 @@ def recognize_image(request):
                     'distance': face_distances[best_match_index],
                     'image_url': known_face_images[best_match_index]
                 })
-            else:
-                face_results.append({
-                    'name': '无相关人物信息',
-                    'distance': None,
-                    'image_url': None
-                })
 
         # 生成上传图片的完整 URL
-        uploaded_image_url = request.build_absolute_uri(f"/uploaded_images/{uploaded_image.name}")
+        uploaded_image_url = request.build_absolute_uri(os.path.join(settings.MEDIA_URL, 'uploaded_images', uploaded_image.name))
 
         return render(request, 'recognition/recognize_image.html', {
             'uploaded_image_url': uploaded_image_url,
             'face_results': face_results,
-            'no_match': not any(result['distance'] is not None for result in face_results)
+            'no_match': not face_results
         })
 
     return render(request, 'recognition/recognize_image.html')
