@@ -38,7 +38,13 @@
                             {% endif %}
                             <div class="card-body">
                                 <h5 class="card-title">{{ result.name }}</h5>
-                                <p class="card-text">相似度: {{ result.distance }}</p>
+                                <p class="card-text">
+                                    {% if result.distance %}
+                                        相似度: {{ result.distance }}
+                                    {% else %}
+                                        无相关人物信息
+                                    {% endif %}
+                                </p>
                             </div>
                         </div>
                     </div>
